@@ -1,3 +1,108 @@
-body {
-	margin: 0;
+@import url("amulya.css");
+
+@layer reset, base, components, utilities;
+
+@layer reset {
+    *, *::before, *::after { box-sizing: border-box; }
+    * { min-width: 0; }
+    html:focus-within { scroll-behavior: smooth; }
+    html, body { height: 100%; }
+    body { margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+    input, button, textarea, select { font: inherit; color: inherit; }
+    textarea { resize: vertical; }
+    :where(ul,ol) { padding-inline-start: 1.2rem; }
+    :where(p, h1, h2, h3, h4, h5, h6, ul, ol, dl, figure) { margin: 0; }
+    :where(a) { color: inherit; text-decoration-skip-ink: auto; }
 }
+
+
+ body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, 'Amulya', sans-serif;
+    font-size: var(--step-body);
+  }
+
+  @layer base {
+    :root {
+        color-scheme: light dark;
+
+    /* Base colors */
+	--black: hsl(0, 0%, 7%); /* #111111 */  
+	--gray-dark: hsl(0, 0%, 18%); /* #2E2E2E */    
+	--gray: hsl(0, 0%, 45%); /* #737373 */         
+	--gray-light: hsl(0, 0%, 83%); /* #D4D4D4 */   
+	--white: hsl(0, 0%, 98%); /* F9F9F9 */    
+	
+	/* Brand colors */
+	--pink: hsl(326, 55%, 76%); /* #E4A1C7 */
+	--purple: hsl(270, 30%, 51%); /* #815CA7 */
+	--twilight: hsl(242, 40%, 43%); /* #45429A */
+    --lavender: hsl(232, 32%, 36%); /* #3E4678 */
+    --gold: hsl(42, 88%, 54%); /* F1B422 */
+
+    /* Semantic tokens */
+    --bg: var(--purple);
+    --fg: var(--lavender);
+    --muted: var(--gray-dark);
+    --surface: var(--gray-light);
+    --border: var(--gray);
+    --link: var(--pink);
+    --focus: var(--gold); 
+
+    /* Spacing */
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem; /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem; /* 16px */
+    --space-5: 1.5rem; /* 24px */
+    --space-6: 2rem; /* 32px */
+    --space-7: 3rem; /* 48px */
+    --space-8: 4rem; /* 64px */
+
+    /* Radii & shadows */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.75rem; /* 12px */
+    --radius-lg: 1rem; /* 16px */
+
+    --shadow-1: 0 1px 2px hsl(240 10% 10% / 0.06);
+    --shadow-2: 0 2px 8px hsl(240 10% 10% / 0.10);
+    --shadow-3: 0 12px 24px hsl(240 10% 10% / 0.18);
+
+    /* z-index map */
+    --z-dropdown: 1000; --z-sticky: 1100; --z-modal: 1200; --z-toast: 1300;
+
+    /* Containers */
+    --container-sm: 48rem; /* 768px */
+    --container-md: 64rem; /* 1024px */
+    --container-lg: 80rem; /* 1280px */
+
+      /* Fluid type scale (clamp) */
+
+    --step--tiny: clamp(0.74rem, calc(0.70rem + 0.20vw), 0.84rem); /* small UI / labels */
+    --step--small: clamp(0.88rem, calc(0.84rem + 0.22vw), 1.00rem); /* small text / captions */
+    --step-body:  clamp(1.00rem, calc(0.97rem + 0.25vw), 1.12rem); /* body text */
+    --step-6:  clamp(1.25rem, calc(1.08rem + 0.35vw), 1.45rem); /* h6 */
+    --step-5:  clamp(1.56rem, calc(1.18rem + 0.50vw), 1.80rem); /* h5 */
+    --step-4:  clamp(1.94rem, calc(1.30rem + 0.70vw), 2.20rem); /* h4 */
+    --step-3:  clamp(2.44rem, calc(1.42rem + 0.95vw), 2.80rem); /* h3 */
+    --step-2:  clamp(3.06rem, calc(1.56rem + 1.25vw), 3.60rem); /* h2 */
+    --step-1:  clamp(3.81rem, calc(1.70rem + 1.50vw), 4.50rem); /* h1 */
+  }
+
+
+    }
+
+    @supports (color: oklch(60% 0.1 0)) {
+        :root {
+            --gray-0: oklch(99% 0 0);
+            --light-gray: oklch(0.9251 0.0071 88.65);
+            --gray: oklch(0.8067 0.0112 76.58);
+            --dark-gray: oklch(0.3466 0.0066 67.61);
+            --black: oklch(0.2315 0.0024 67.7);
+            --white: oklch(100% 0 0);
+            --sand: oklch(0.9154 0.085 94.48);
+            --gold: oklch(0.8923 0.1356 89.45);
+        }
+  	}
