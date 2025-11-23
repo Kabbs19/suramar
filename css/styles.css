@@ -16,14 +16,6 @@
     :where(a) { color: inherit; text-decoration-skip-ink: auto; }
 }
 
-
- body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: system-ui, -apple-system, 'Amulya', sans-serif;
-    font-size: var(--step-body);
-  }
-
   @layer base {
     :root {
         color-scheme: light dark;
@@ -33,18 +25,18 @@
 	--gray-dark: hsl(0, 0%, 18%); /* #2E2E2E */    
 	--gray: hsl(0, 0%, 45%); /* #737373 */         
 	--gray-light: hsl(0, 0%, 83%); /* #D4D4D4 */   
-	--white: hsl(0, 0%, 98%); /* F9F9F9 */    
+	--white: hsl(0, 0%, 98%); /* #F9F9F9 */    
 	
 	/* Brand colors */
 	--pink: hsl(326, 55%, 76%); /* #E4A1C7 */
 	--purple: hsl(270, 30%, 51%); /* #815CA7 */
 	--twilight: hsl(242, 40%, 43%); /* #45429A */
     --lavender: hsl(232, 32%, 36%); /* #3E4678 */
-    --gold: hsl(42, 88%, 54%); /* F1B422 */
+    --gold: hsl(42, 88%, 54%); /* #F1B422 */
 
     /* Semantic tokens */
     --bg: var(--purple);
-    --fg: var(--lavender);
+    --fg: var(--white);
     --muted: var(--gray-dark);
     --surface: var(--gray-light);
     --border: var(--gray);
@@ -96,13 +88,249 @@
 
     @supports (color: oklch(60% 0.1 0)) {
         :root {
-            --gray-0: oklch(99% 0 0);
-            --light-gray: oklch(0.9251 0.0071 88.65);
-            --gray: oklch(0.8067 0.0112 76.58);
-            --dark-gray: oklch(0.3466 0.0066 67.61);
-            --black: oklch(0.2315 0.0024 67.7);
-            --white: oklch(100% 0 0);
-            --sand: oklch(0.9154 0.085 94.48);
-            --gold: oklch(0.8923 0.1356 89.45);
+
+			/* Base colors */
+			--black: oklch(0.1776 0 0); /* #111111 */  
+			--gray-dark: oklch(0.3012 0 0); /* #2E2E2E */    
+			--gray: oklch(0.5555 0 0); /* #737373 */         
+			--gray-light: oklch(0.8699 0 0); /* #D4D4D4 */   
+			--white: oklch(0.9821 0 0); /* #F9F9F9 */ 
+
+			/* Brand colors */
+			--pink: oklch(0.7844 0.0928 344.43); /* #E4A1C7 */
+			--purple: oklch(0.545 0.1193 305.55); /* #815CA7 */
+			--twilight: oklch(0.4325 0.1395 280.36); /* #45429A */
+			--lavender: oklch(0.4116 0.0841 275.21); /* #3E4678 */
+			--gold: oklch(0.8053 0.1586 82.63); /* #F1B422 */
         }
   	}
+
+
+ body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, 'Amulya', sans-serif;
+    font-size: var(--step-body);
+  }
+
+/* Global links */
+  a { color: var(--link); text-underline-offset: 0.2em; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  /* Headings */
+  h1 { font-size: var(--step-1); line-height: 1.1; }
+  h2 { font-size: var(--step-2); line-height: 1.2; }
+  h3 { font-size: var(--step-3); line-height: 1.25; }
+  h4 { font-size: var(--step-4); }
+  h5 { font-size: var(--step-5); }
+  h6 { font-size: var(--step-6); }
+
+  /* Containers */
+  .container { width: min(100% - 2rem, var(--container-lg)); margin-inline: auto; }
+  .container-sm { width: min(100% - 2rem, var(--container-sm)); margin-inline: auto; }
+  .container-md { width: min(100% - 2rem, var(--container-md)); margin-inline: auto; }
+
+  /* Selection */
+  ::selection { background: var(--gold); color: var(--black); }
+
+@layer components {
+
+  /* FLEX CONTAINERS ---------------------------------------- */
+
+  /* Basic flex container */
+  .flex {
+    display: flex;
+  }
+
+  /* Flex direction helpers */
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+
+  /* Main-axis alignment */
+  .justify-start {
+    justify-content: flex-start;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .justify-between {
+    justify-content: space-between;
+  }
+
+  .justify-around {
+    justify-content: space-around;
+  }
+
+  .justify-evenly {
+    justify-content: space-evenly;
+  }
+
+  /* Cross-axis alignment */
+  .items-start {
+    align-items: flex-start;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+
+  .items-end {
+    align-items: flex-end;
+  }
+
+  /* Self alignment (overrides parent) */
+  .self-center {
+    align-self: center;
+  }
+
+  .self-start {
+    align-self: flex-start;
+  }
+
+  .self-end {
+    align-self: flex-end;
+  }
+
+  /* Flex wrap */
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .flex-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  /* GAP (pure CSS gap support) */
+  .gap-xs {
+    gap: var(--space-2);
+  }
+
+  .gap-sm {
+    gap: var(--space-4);
+  }
+
+  .gap-md {
+    gap: var(--space-6);
+  }
+
+  .gap-lg {
+    gap: var(--space-8);
+  }
+
+
+  /* FLEX ITEMS --------------------------------------------- */
+
+  /* Fully flexible item */
+  .flex-1 {
+    flex: 1 1 0%;
+  }
+
+  /* Disable grow, disable shrink — fixed basis */
+  .flex-fixed {
+    flex: 0 0 auto;
+  }
+
+  /* Grow-only items */
+  .flex-grow {
+    flex-grow: 1;
+  }
+
+  .flex-grow-0 {
+    flex-grow: 0;
+  }
+
+  /* Shrink control */
+  .flex-shrink {
+    flex-shrink: 1;
+  }
+
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+
+  /* Basis helpers */
+  .basis-auto {
+    flex-basis: auto;
+  }
+
+  .basis-full {
+    flex-basis: 100%;
+  }
+
+}
+  
+@layer utilities {
+
+  /* Margin */
+  .m-1 { margin: var(--space-1); }
+  .mt-1 { margin-top: var(--space-1); } .mr-1 { margin-right: var(--space-1); }
+  .mb-1 { margin-bottom: var(--space-1); } .ml-1 { margin-left: var(--space-1); } 
+
+  .m-2 { margin: var(--space-2); }
+  .mt-2 { margin-top: var(--space-2);} .mr-2 { margin-right: var(--space-2); }
+  .mb-2 { margin-bottom: var(--space-2); } .ml-2 { margin-left: var(--space-2); }
+
+  .m-3 { margin: var(--space-3); }
+  .mt-3 { margin-top: var(--space-3); } .mr-3 { margin-right: var(--space-3); }
+  .mb-3 { margin-bottom: var(--space-3); } .ml-3 { margin-left: var(--space-3); }
+
+  .m-4 { margin: var(--space-4); }
+  .mt-4 { margin-top: var(--space-4); } .mr-4 { margin-right: var(--space-4); }
+  .mb-4 { margin-bottom: var(--space-4); } .ml-4 { margin-left: var(--space-4); }
+
+  .m-5 { margin: var(--space-5); }
+  .mt-5 { margin-top: var(--space-5); } .mr-5 { margin-right: var(--space-5); }
+  .mb-5 { margin-bottom: var(--space-5); } .ml-5 { margin-left: var(--space-5); }
+
+  .m-6 { margin: var(--space-6); }
+  .mt-6 { margin-top: var(--space-6); } .mr-6 { margin-right: var(--space-6); }
+  .mb-6 { margin-bottom: var(--space-6); } .ml-6 { margin-left: var(--space-6); }
+
+  .m-7 { margin: var(--space-7); }
+  .mt-7 { margin-top: var(--space-7); } .mr-7 { margin-right: var(--space-7); }
+  .mb-7 { margin-bottom: var(--space-7); } .ml-7 { margin-left: var(--space-7); }
+
+  .m-8 { margin: var(--space-8); }
+  .mt-8 { margin-top: var(--space-8); } .mr-8 { margin-right: var(--space-8); }
+  .mb-8 { margin-bottom: var(--space-8); } .ml-8 { margin-left: var(--space-8); }
+
+  /* Padding */
+  .p-1 { padding: var(--space-1); }
+  .pt-1 { padding-top: var(--space-1); } .pr-1 { padding-right: var(--space-1); }
+  .pb-1 { padding-bottom: var(--space-1); } .pl-1 { padding-left: var(--space-1); } 
+
+  .p-2 { padding: var(--space-2); }
+  .pt-2 { padding-top: var(--space-2);} .pr-2 { padding-right: var(--space-2); }
+  .pb-2 { padding-bottom: var(--space-2); } .pl-2 { padding-left: var(--space-2); }
+
+  .p-3 { padding: var(--space-3); }
+  .pt-3 { padding-top: var(--space-3); } .pr-3 { padding-right: var(--space-3); }
+  .pb-3 { padding-bottom: var(--space-3); } .pl-3 { padding-left: var(--space-3); }
+
+  .p-4 { padding: var(--space-4); }
+  .pt-4 { padding-top: var(--space-4); } .pr-4 { padding-right: var(--space-4); }
+  .pb-4 { padding-bottom: var(--space-4); } .pl-4 { padding-left: var(--space-4); }
+
+  .p-5 { padding: var(--space-5); }
+  .pt-5 { padding-top: var(--space-5); } .pr-5 { padding-right: var(--space-5); }
+  .pb-5 { padding-bottom: var(--space-5); } .pl-5 { padding-left: var(--space-5); }
+
+  .p-6 { padding: var(--space-6); }
+  .pt-6 { padding-top: var(--space-6); } .pr-6 { padding-right: var(--space-6); }
+  .pb-6 { padding-bottom: var(--space-6); } .pl-6 { padding-left: var(--space-6); }
+
+  .p-7 { padding: var(--space-7); }
+  .pt-7 { padding-top: var(--space-7); } .pr-7 { padding-right: var(--space-7); }
+  .pb-7 { padding-bottom: var(--space-7); } .pl-7 { padding-left: var(--space-7); }
+
+  .p-8 { padding: var(--space-8); }
+  .pt-8 { padding-top: var(--space-8); } .pr-8 { padding-right: var(--space-8); }
+  .pb-8 { padding-bottom: var(--space-8); } .pl-8 { padding-left: var(--space-8); }
+}
