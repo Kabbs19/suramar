@@ -334,3 +334,20 @@
   .pt-8 { padding-top: var(--space-8); } .pr-8 { padding-right: var(--space-8); }
   .pb-8 { padding-bottom: var(--space-8); } .pl-8 { padding-left: var(--space-8); }
 }
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 730px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-home {
+background-image: 
+    linear-gradient(180deg, rgba(60, 3, 102, 0.60) 0%, rgba(89, 22, 139, 0.40) 50%, rgba(2, 6, 24, 0.90) 100%),
+    url(/images/suramar-1920px.webp);
+}
