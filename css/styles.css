@@ -14,6 +14,7 @@
     :where(ul,ol) { padding-inline-start: 1.2rem; }
     :where(p, h1, h2, h3, h4, h5, h6, ul, ol, dl, figure) { margin: 0; }
     :where(a) { color: inherit; text-decoration-skip-ink: auto; }
+    img {border: solid 2px var(--pink); border-radius: 10px; box-shadow: var(--shadow-3);}
 }
 
   @layer base {
@@ -240,6 +241,10 @@
     flex: 1 1 0%;
   }
 
+  .flex-2 {
+    flex: 2 1 0%;
+  }
+
   /* Disable grow, disable shrink — fixed basis */
   .flex-fixed {
     flex: 0 0 auto;
@@ -343,6 +348,14 @@
   .pb-8 { padding-bottom: var(--space-8); } .pl-8 { padding-left: var(--space-8); }
 }
 
+.two-thirds {
+  width: 66.666%;
+}
+
+.width-75 {
+  width: 75%;
+}
+
 #header {
   display: flex;
   flex-direction: column;
@@ -366,7 +379,7 @@ background-image:
     to bottom,
     var(--black),
     var(--twilight),
-    var(--black),
+    var(--black)
   );
 }
 
@@ -376,6 +389,8 @@ background-image:
 
 .img-500 {
   width: 500px;
-  box-shadow: var(--shadow-2);
-  border-radius: 10px;
+}
+
+.img-800 {
+  width: 800px;
 }
